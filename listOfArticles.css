@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    width:100%;
+    background-color: white;
+    margin:0;
+    padding: 0;
+}
+
+header{
+    border-bottom:1px solid blue;
+    padding: 15px;
+}
+
+h4{
+  margin:0;
+}
+
+.LeftSide{
+    float: left;
+}
+
+.RightSide{
+    float: right;
+}
+
+nav{
+    width: 80%;
+    margin:0 auto;
+    margin-bottom: 5px;
+}
+
+ul li{
+    list-style-type:none;
+    margin-left: 15px;
+}

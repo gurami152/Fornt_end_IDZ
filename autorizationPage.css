@@ -1,0 +1,67 @@
+*, ::after, ::before {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+html,body{
+    width:100%;
+    background-color: white;
+    margin:0;
+    padding: 0;
+    text-align: center;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #373a3c;
+}
+
+.buttonContainer{ 
+    max-width: 46rem;
+    margin: 0 auto;
+
+}
+
+
+
+.buttonConteinerColumn{
+    width: 50%;
+    float: left;
+    position: relative;
+    min-height: 1px;
+}
+
+.button{
+    background-color: transparent;
+    padding: .375rem 8rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-radius: .25rem;
+    border:1px solid transparent;
+}
+
+#GoogleButton{
+    border-color:red;
+}
+
+#GithubButton{
+    border-color:#6a737d;
+}
+
+#GoogleButton:hover{
+    background-color:red;
+    color:white;
+}
+
+#GithubButton:hover{
+    background-color:#6a737d;
+    color:white;
+}
