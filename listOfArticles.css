@@ -11,7 +11,7 @@ html,body{
 
 header{
     border-bottom:1px solid blue;
-    padding: 15px;
+    padding-bottom: 20px;
 }
 
 h4{
@@ -35,4 +35,36 @@ nav{
 ul li{
     list-style-type:none;
     margin-left: 15px;
+    cursor: pointer;
+}
+
+#content{
+    padding: 20px;
+    width:60%;
+    margin:0 auto;
+}
+
+.article{
+    padding: 20px;
+    display:flow-root;
+    border-bottom:1px solid gray;
+}
+
+.article:hover h4{
+   color:blue;
+}
+
+.article_image{
+    float:left;
+    width: 20%;
+}
+
+.article_image img{
+    width: 90%;
+}
+
+.article_anotation{
+    float:left;
+    width: 80%;
+    text-align: left;
 }

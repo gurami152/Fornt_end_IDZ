@@ -1,6 +1,6 @@
 var mountPoint = '#root';
 var LogoutButton;
-
+var articleID;
 
 var firebaseConfig = {
   apiKey: "AIzaSyD6LMPI4pdqO92UJCay8cyYluGPIEaT1gU",
@@ -12,17 +12,15 @@ var firebaseConfig = {
   appId: "1:647214250489:web:36ffff687223e76c476528",
 };
 // Initialize Firebase
+
 firebase.initializeApp(firebaseConfig);
-var dbRef = firebase.database();
-var contactsRef = dbRef.ref('uid');
-
-
 
 $(document).ready(function () {
   //Social and Anonymous Auth Scheme Login
   $('#GoogleButton,#GithubButton').on('click', function(e) {
     login($(this).attr('id'));
   })
+  
 });
 
 function AuthSuccesfull(){
@@ -33,23 +31,57 @@ function AuthSuccesfull(){
     LogoutButton.onclick = Logout;
     var AddButton = document.getElementById("Add");
     AddButton.onclick=AddClick;
-    //load older conatcts as well as any newly added one...
-    var starCountRef = firebase.database().ref('uid/');
-    starCountRef.on('value', function(snapshot) {
-      document.querySelector('#content')
-      .innerHTML += contactHtmlFromObject(snapshot.val());
+    var query = firebase.database().ref("article");
+    query.once("value")
+    .then(function(snapshot) {
+    snapshot.forEach(function(childSnapshot) {
+        document.querySelector('#content')
+        .innerHTML += articleHtmlFromObject(childSnapshot.val(),childSnapshot.key);
+      });
+      articleClickSet();
     });
+    
+  })
+  
+}
 
-
+function articleClickSet(){
+  $('.article').on('click', function(e) {
+    articleID=this.id;
+    $.get('detailArticle.html', function(data){
+      $(mountPoint).empty().html(data);
+      var articleRef = firebase.database().ref('article/' +articleID+'/');
+      console.log(articleID);
+      articleRef.on('value', function(snapshot) {
+        document.querySelector('#content')
+        .innerHTML += detailArticleHtml(snapshot.val());
+      });
+      var ReturnBackButton = document.getElementById("Back");
+      ReturnBackButton.onclick=AuthSuccesfull;
+    })
+      
   })
 }
 
-function contactHtmlFromObject(article){
-  console.log( article );
+function detailArticleHtml(article){
   var html = '';
-  html += '<div>';
-    html += '<p class="lead">'+article.NameArticle+'</p>';
-    html += '<img src="'+article.ImageURL+'">'
+  html += '<h2>'+article.Name+'</h2>';
+  html += '<img src="'+article.ImageURL+'">';
+  html += '<p>'+article.TextOfArticle+'</p>';
+  return html;
+}
+
+function articleHtmlFromObject(article,key){
+  var html = '';
+  html += '<div class="article" id="'+key+'">';
+    html += '<div class="article_image">';
+      html += '<img src="'+article.ImageURL+'">';
+    html += '</div>';
+    html += '<div class="article_anotation">';
+      html += '<h4>'+article.Name+'</h4>';
+      html += '<p>'+article.Date+'</p>';
+      html += '<p>'+article.Anotation+'</p>';
+    html += '</div>';
   html += '</div>';
   return html;
 }
@@ -59,6 +91,8 @@ function AddClick(){
     $(mountPoint).empty().html(data);
     var LoadPhotoButton = document.getElementById("button2");
     LoadPhotoButton.onclick=LoadFile;
+    var ReturnBackButton = document.getElementById("Back");
+    ReturnBackButton.onclick=AuthSuccesfull;
   })
 }
 
@@ -103,6 +137,7 @@ function Logout(){
     .signOut()
     .then(function () {
         console.log("True");
+        location.reload();
         return true; //Do necessary cleanup
     })
     .catch(function (e) {
@@ -116,13 +151,34 @@ function LoadFile(){
   const file = document.querySelector('#photo').files[0]
   const name = (+new Date()) + '-' + file.name;
   const metadata = {
-    contentType: file.type
+  contentType: file.type
   };
+  
   const task = ref.child(name).put(file, metadata);
   task
-    .then(snapshot => snapshot.ref.getDownloadURL())
-    .then((url) => {
-      console.log(url);
-    })
+  .then(snapshot => snapshot.ref.getDownloadURL())
+  .then((url) => {
+    console.log(url);
+    LoadDataToDateBase(url);
+    AuthSuccesfull();
+  })
   .catch(console.error);
+}
+
+function LoadDataToDateBase(ImageURL){
+  var newArticleKey = firebase.database().ref().child('articles').push().key;
+  if( document.querySelector('#name').value != '' || document.querySelector('#article').value != '' ){
+    var now = {
+      Name: document.querySelector('#name').value,
+      TextOfArticle: document.querySelector('#article').value,
+      Date: new Date(),
+      ImageURL:ImageURL,
+      Anotation: document.querySelector('#anotation').value
+    };
+    var updates = {};
+    updates['/article/' + newArticleKey] = now;
+    return firebase.database().ref().update(updates);
+    } else {
+      alert('Пожалуйста введите заголовок и статью');
+    }
 }
