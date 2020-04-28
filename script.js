@@ -17,7 +17,7 @@ firebase.initializeApp(firebaseConfig);
 
 $(document).ready(function () {
   //Social and Anonymous Auth Scheme Login
-  $('#GoogleButton,#GithubButton').on('click', function(e) {
+  $('#GoogleButton,#GithubButton,#anonymous').on('click', function(e) {
     login($(this).attr('id'));
   })
   
@@ -27,10 +27,12 @@ function AuthSuccesfull(){
   hashValue='listOfArticles';
   $.get(hashValue+'.html', function(data){
     $(mountPoint).empty().html(data);
-    var LogoutButton = document.getElementById("Logout");
-    LogoutButton.onclick = Logout;
-    var AddButton = document.getElementById("Add");
-    AddButton.onclick=AddClick;
+    $('#Logout').on('click', function(e) {
+      Logout();
+    })
+    $('#Add').on('click', function(e) {
+      AddClick();
+    })
     var query = firebase.database().ref("article");
     query.once("value")
     .then(function(snapshot) {
@@ -56,8 +58,9 @@ function articleClickSet(){
         document.querySelector('#content')
         .innerHTML += detailArticleHtml(snapshot.val());
       });
-      var ReturnBackButton = document.getElementById("Back");
-      ReturnBackButton.onclick=AuthSuccesfull;
+      $('#Back').on('click', function(e) {
+        AuthSuccesfull();
+      })
     })
       
   })
@@ -111,7 +114,15 @@ function login (type) {
     }
 
     case 'anonymous': {
-      request = auth.signInAnonymously();
+      request = firebase.auth().signInAnonymously();
+      if( request !== null ){
+        return request
+        .then(function (user) {
+          console.log(user);
+          AuthSuccesfull();
+          return user;
+        })
+      }
       break;
     }
   }

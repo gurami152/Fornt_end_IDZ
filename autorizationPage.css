@@ -18,10 +18,7 @@ html,body{
 .buttonContainer{ 
     max-width: 46rem;
     margin: 0 auto;
-
 }
-
-
 
 .buttonConteinerColumn{
     width: 50%;
@@ -64,4 +61,20 @@ html,body{
 #GithubButton:hover{
     background-color:#6a737d;
     color:white;
+}
+
+.singAnonim{
+    clear: both;
+    padding: 5px;
+    color:lightgray;
+    float:none;
+    cursor: pointer;
+}
+
+.singAnonim h5{
+    margin:0;
+}
+
+.singAnonim h5:hover{
+    color: #373a3c;
 }
