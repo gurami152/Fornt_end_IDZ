@@ -1,0 +1,35 @@
+{
+  "name": "fornt_end_idz",
+  "version": "1.0.0",
+  "description": "Idz FrontEnd firebase ",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gurami152/Fornt_end_IDZ.git"
+  },
+  "keywords": [
+    "firebase",
+    "server",
+    "save",
+    "photos"
+  ],
+  "author": "Drebezov Denis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gurami152/Fornt_end_IDZ/issues"
+  },
+  "homepage": "https://github.com/gurami152/Fornt_end_IDZ#readme",
+  "dependencies": {
+    "firebase": "^7.14.2",
+    "jquery": "^3.5.0",
+    "webpack": "^4.43.0"
+  },
+  "devDependencies": {
+    "css-loader": "^3.5.3",
+    "style-loader": "^1.2.1",
+    "webpack-cli": "^3.3.11"
+  }
+}

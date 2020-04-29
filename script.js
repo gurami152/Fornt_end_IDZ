@@ -1,6 +1,16 @@
+var $ = require('jquery');
+var firebase = require("firebase/app");
+require("firebase/auth");
+require("firebase/storage");
+require("firebase/database");
+
+
 var mountPoint = '#root';
 var LogoutButton;
 var articleID;
+
+
+
 
 var firebaseConfig = {
   apiKey: "AIzaSyD6LMPI4pdqO92UJCay8cyYluGPIEaT1gU",
