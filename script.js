@@ -6,7 +6,6 @@ require("firebase/database");
 
 
 var mountPoint = '#root';
-var LogoutButton;
 var articleID;
 
 
