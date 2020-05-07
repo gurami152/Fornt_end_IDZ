@@ -11,7 +11,7 @@ h2{
 }
 
 form{
-    width: 60%;
+    width: 100%;
     margin:0 auto;
 }
 
@@ -28,4 +28,12 @@ button{
     left: 20px;
     top:  20px;
     cursor: pointer;    
+}
+
+#addArticleButtonContainer{
+    width: 60%;
+    margin:0 auto;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }

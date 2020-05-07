@@ -1,0 +1,37 @@
+html,body{
+    width:100%;
+    background-color: white;
+    margin:0;
+    padding: 0;
+}
+
+h2{
+    text-align: center;
+    width: 100%;
+}
+
+form{
+    width: 60%;
+    margin:0 auto;
+}
+
+form *{
+    width: 100%;
+}
+
+button{
+    width: 200px;
+}
+
+#Back{
+    position: absolute;
+    left: 20px;
+    top:  20px;
+    cursor: pointer;    
+}
+
+#addArticleButtonContainer{
+    width: 60%;
+    margin:0 auto;
+    text-align: center;
+}

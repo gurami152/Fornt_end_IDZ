@@ -68,3 +68,15 @@ ul li{
     width: 80%;
     text-align: left;
 }
+
+.deleteButton img , .editButton img{
+    height: 20px;
+    float: left;
+}
+
+.deleteButton, .editButton{
+    padding-top:10px;
+    padding-right:10px;
+    float: left;
+    cursor: pointer;
+}

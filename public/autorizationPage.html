@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="autorizationPage.css">
+    </head>
+    <body>
+        <div class="header">
+            <h2>Виберите удобный способ авторизации</h2>
+            <h4>По email и паролю</h4>
+        </div>
+        <h4 id='UserCreatedMessage'>Пользователь успешно создан<h4>
+        <div class="formgroup buttonContainer">
+            <form>
+                <p for="email">Email</p>
+                <input type="text" class="form-control" id="email" autocomplete="email" placeholder="example@mail.com">
+                <p for="password">Пароль</p>
+                <input type="password" class="form-control" id="password" autocomplete="password" placeholder="Ваш пароль">
+            </form>
+        </div>
+        <div class=buttonContainer>
+            <div class="buttonConteinerColumn">
+                <button class="button" id="RegisterButton"> Регистрация</button> 
+            </div>
+            <div class="buttonConteinerColumn">
+                <button class="button" id="LoginButton"> Вход</button> 
+            </div>
+        </div>
+        <p id="PasswordError">Не верный email или пароль</p>
+        <div class=buttonContainer>
+            <h4>С помощью социальных сетей</h4>
+            <div class="buttonConteinerColumn">
+                <button class="button" id="GoogleButton"> Google</button> 
+            </div>
+            <div class="buttonConteinerColumn">
+                <button class="button" id="GithubButton"> GitHub</button> 
+            </div>
+        </div>
+        
+        
+    </body>   
+</html>

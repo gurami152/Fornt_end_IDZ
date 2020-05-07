@@ -63,18 +63,44 @@ html,body{
     color:white;
 }
 
-.singAnonim{
-    clear: both;
-    padding: 5px;
-    color:lightgray;
-    float:none;
-    cursor: pointer;
+.formgroup{
+    clear:both;
 }
 
-.singAnonim h5{
-    margin:0;
+.formgroup input{
+    width:90%;
+    font-size: 1rem;
 }
 
-.singAnonim h5:hover{
-    color: #373a3c;
+.RegisterbuttonConteinerColumn{
+    margin-top:20px;
+    width: 100%;
+    float: left;
+    position: relative;
+    min-height: 1px;
+}
+
+#UserRegisterButton:hover{
+    background-color:#6a737d;
+    color:white;
+}
+
+#Back{
+    position: absolute;
+    left: 20px;
+    top:  20px;
+    cursor: pointer;    
+}
+
+#PasswordError{
+    clear:both;
+    color:red;
+}
+
+#UserCreatedMessage{
+    color:blue;
+}
+
+#RegisterButton:hover{
+    color:blue;
 }
